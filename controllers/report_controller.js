@@ -1,5 +1,5 @@
-const Report = require("../models/Report");
-const UserLocation = require("../models/userLocation");
+const Report = require("../models/report");
+const UserLocation = require("../models/user_location");
 
 const submitReport = async (req, res) => {
   try {

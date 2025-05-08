@@ -1,4 +1,4 @@
-const UserLocation = require("../models/userLocation");
+const UserLocation = require("../models/user_location");
 
 const updateUserLocation = async (req, res) => {
   const { userId, lat, lng, deviceToken } = req.body;

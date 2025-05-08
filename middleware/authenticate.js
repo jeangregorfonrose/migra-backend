@@ -1,5 +1,5 @@
 const express = require("express");
-const admin = require("../firebase");
+const admin = require("../firebase/firebase");
 
 // Middleware to verify Firebase ID token
 const authenticate = async (req, res, next) => {
