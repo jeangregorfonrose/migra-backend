@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { submitReport } = require("../controllers/reportController");
+const { submitReport } = require("../controllers/report_controller");
 const UserLocation = require("../models/userLocation");
 
 router.post("/report", submitReport);
