@@ -3,9 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const reportRoutes = require("./routes/reportRoutes");
-const locationRoutes = require("./routes/locationRoutes");
-const registerRoutes = require("./routes/registerRoutes");
+const reportRoutes = require("./routes/report_routes");
+const locationRoutes = require("./routes/location_routes");
+const registerRoutes = require("./routes/register_routes");
 
 dotenv.config(); // Load environment variables from .env file
 
