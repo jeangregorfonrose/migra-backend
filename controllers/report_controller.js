@@ -51,4 +51,14 @@ const submitReport = async (req, res) => {
   }
 };
 
-module.exports = { submitReport };
+const getReports = async (req, res) => {
+  try {
+    const reports = await Report.find();
+    res.status(200).json(reports);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching reports", error });
+  }
+};
+
+module.exports = { submitReport, getReports };
