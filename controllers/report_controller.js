@@ -16,30 +16,30 @@ const submitReport = async (req, res) => {
     await newReport.save();
 
     // Radius in meters (e.g., 5 km)
-    const radiusInMeters = 5000;
+    // const radiusInMeters = 5000;
 
     // Find users within the radius
-    const nearbyUsers = await UserLocation.find({
-      location: {
-        $nearSphere: {
-          $geometry: {
-            type: "Point",
-            coordinates: [lng, lat],
-          },
-          $maxDistance: radiusInMeters,
-        },
-      },
-    });
+    // const nearbyUsers = await UserLocation.find({
+    //   location: {
+    //     $nearSphere: {
+    //       $geometry: {
+    //         type: "Point",
+    //         coordinates: [lng, lat],
+    //       },
+    //       $maxDistance: radiusInMeters,
+    //     },
+    //   },
+    // });
 
-    console.log("Nearby users:", nearbyUsers);
+    // console.log("Nearby users:", nearbyUsers);
 
     // Get device tokens to send notifications
-    const deviceTokens = nearbyUsers
-      .map((user) => user.deviceToken)
-      .filter(Boolean);
+    // const deviceTokens = nearbyUsers
+    //   .map((user) => user.deviceToken)
+    //   .filter(Boolean);
 
     // (Next Step) Send push notifications via FCM
-    console.log("Nearby device tokens:", deviceTokens);
+    // console.log("Nearby device tokens:", deviceTokens);
 
     // Send notifications
     // await sendNotificationToNearbyUsers(filteredUsers, { lat, lng });
