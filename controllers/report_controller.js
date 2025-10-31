@@ -1,17 +1,14 @@
 const Report = require("../models/report");
 const UserLocation = require("../models/user_location");
+const { createResponse } = require("../utils/responseTemplate");
 
 const submitReport = async (req, res) => {
   try {
-    const { description, lat, lng } = req.body;
+    const report = req.body;
 
-    const newReport = new Report({
-      description,
-      location: {
-        type: "Point",
-        coordinates: [lng, lat], // Note: longitude comes first
-      },
-    });
+    console.log("Received report:", req.body);
+
+    const newReport = new Report(report);
 
     await newReport.save();
 
@@ -44,10 +41,10 @@ const submitReport = async (req, res) => {
     // Send notifications
     // await sendNotificationToNearbyUsers(filteredUsers, { lat, lng });
 
-    res.status(201).json({ message: "Report submitted successfully" });
+    res.status(201).json(createResponse("success", "Report created successfully", newReport));
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error creating report", error });
+    res.status(500).json(createResponse("error", "Error creating report", error));
   }
 };
 
