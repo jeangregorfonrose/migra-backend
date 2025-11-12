@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ReportSchema = new mongoose.Schema({
   active: { type: Boolean, default: true },
-  description: { type: String},
+  description: { type: String, required: true },
   location: {
     type: {
       type: String,
