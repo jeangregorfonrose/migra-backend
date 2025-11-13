@@ -1,5 +1,6 @@
 const cron = require("node-cron");
 const Report = require("../models/report");
+const logger = require("../utils/logger");
 
 // Job to deactivate reports older than 1 hour
 // Runs every hour
@@ -11,8 +12,8 @@ cron.schedule("0 * * * *", async () => {
       { active: true, timestamp: { $lte: oneHourAgo } },
       { $set: { active: false } }
     );
-    console.log(`Updated ${result.modifiedCount} documents`);
+    logger.info(`Updated ${result.modifiedCount} documents`);
   } catch (err) {
-    console.error("Error updating documents:", err);
+    logger.error(err, "Error updating documents:");
   }
 });
