@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const ReportSchema = new mongoose.Schema({
   active: { type: Boolean, default: true },
   description: { type: String },
+  address: {type : String },
   location: {
     type: {
       type: String,
