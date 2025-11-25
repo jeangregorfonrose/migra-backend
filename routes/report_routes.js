@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { submitReport } = require("../controllers/report_controller");
+const { submitReport, getReports } = require("../controllers/report_controller");
 const UserLocation = require("../models/user_location");
 
 router.post("/report", submitReport);
+router.get("/reports", getReports);
 
 router.get("/test-nearby", async (req, res) => {
   const testLng = -73.935242; // use same area where you added users
