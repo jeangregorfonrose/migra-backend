@@ -4,15 +4,20 @@ const logger = require("../utils/logger");
 
 const submitReport = async (req, res) => {
   try {
-    const report = req.body;
+    // Fix Mass Assignment: Explicitly pick fields
+    const { description, location } = req.body;
 
-    logger.info("Received report" , {data : {user: req.user.uid, report: report}});
+    logger.info("Received report", { data: { user: req.user.uid, report: { description, location } } });
 
-    const newReport = new Report(report);
+    const newReport = new Report({
+      description,
+      location,
+      // active and timestamp are set by default in the schema
+    });
 
     await newReport.save();
 
-    logger.info("Report saved successfully:", {data: {report: newReport}});
+    logger.info("Report saved successfully:", { data: { report: newReport } });
     res.status(201).json(createResponse("success", "Report created successfully", newReport));
   } catch (error) {
     logger.error("Error creating report:", error);
