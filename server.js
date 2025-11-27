@@ -30,7 +30,6 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api", reportRoutes);
-app.use("/api", locationRoutes);
 app.use("/api", registerRoutes);
 
 // Connect to MongoDB
@@ -41,9 +40,6 @@ mongoose
   })
   .then(() => logger.info("Connected to MongoDB"))
   .catch((error) => logger.error("Error connecting to MongoDB", error));
-
-// Default route
-// app.get("/", (req, res) => res.send("Welcome to the Immigration Report API"));
 
 // Serve static files from 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
