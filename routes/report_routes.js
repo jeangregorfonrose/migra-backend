@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { submitReport, getReports } = require("../controllers/report_controller");
+const { authenticate } = require("../middleware/authenticate");
 const UserLocation = require("../models/user_location");
 
-router.post("/report", submitReport);
+router.post("/report", authenticate, submitReport);
 router.get("/reports", getReports);
 
 router.get("/test-nearby", async (req, res) => {
