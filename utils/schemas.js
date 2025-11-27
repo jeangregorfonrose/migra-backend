@@ -2,6 +2,7 @@ const Joi = require('joi');
 
 const reportSchema = Joi.object({
     description: Joi.string().max(500).optional(),
+    address: Joi.string().max(255).optional(),
     location: Joi.object({
         type: Joi.string().valid('Point').required(),
         coordinates: Joi.array().items(Joi.number()).length(2).required(),
