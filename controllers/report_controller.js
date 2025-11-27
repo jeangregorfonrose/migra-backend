@@ -27,7 +27,7 @@ const submitReport = async (req, res) => {
 
 const getReports = async (req, res) => {
   try {
-    const reports = await Report.find();
+    const reports = await Report.find({ active: true });
     res.status(200).json(reports);
   } catch (error) {
     logger.error("Error fetching reports:", error);
