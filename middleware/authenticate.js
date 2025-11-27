@@ -17,7 +17,7 @@ const authenticate = async (req, res, next) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
     req.user = decodedToken;
-    logger.info("Token verified for user:", decodedToken.uid);
+    logger.info("Token verified for user:", {data : {uid: decodedToken.uid}});
     next();
   } catch (error) {
     logger.error("Error verifying token:", error);

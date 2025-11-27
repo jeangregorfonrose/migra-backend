@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 const reportRoutes = require("./routes/report_routes");
-const locationRoutes = require("./routes/location_routes");
 const registerRoutes = require("./routes/register_routes");
 const morgan = require("morgan");
 const logger = require("./utils/logger");

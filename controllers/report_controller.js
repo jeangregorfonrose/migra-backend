@@ -6,13 +6,13 @@ const submitReport = async (req, res) => {
   try {
     const report = req.body;
 
-    logger.info("Received report:", req.body);
+    logger.info("Received report" , {data : {user: req.user.uid, report: report}});
 
     const newReport = new Report(report);
 
     await newReport.save();
 
-    logger.info("Report saved successfully:", newReport);
+    logger.info("Report saved successfully:", {data: {report: newReport}});
     res.status(201).json(createResponse("success", "Report created successfully", newReport));
   } catch (error) {
     logger.error("Error creating report:", error);
