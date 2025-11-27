@@ -5,12 +5,13 @@ const logger = require("../utils/logger");
 const submitReport = async (req, res) => {
   try {
     // Fix Mass Assignment: Explicitly pick fields
-    const { description, location } = req.body;
+    const { description, address, location } = req.body;
 
-    logger.info("Received report", { data: { user: req.user.uid, report: { description, location } } });
+    logger.info("Received report", { data: { user: req.user.uid, report: { description, address, location } } });
 
     const newReport = new Report({
       description,
+      address,
       location,
       // active and timestamp are set by default in the schema
     });
