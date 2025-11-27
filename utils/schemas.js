@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const reportSchema = Joi.object({
-    description: Joi.string().max(500).optional(),
+    description: Joi.string().max(500).allow('').optional(),
     address: Joi.string().max(255).optional(),
     location: Joi.object({
         type: Joi.string().valid('Point').required(),
