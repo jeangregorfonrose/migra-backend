@@ -20,6 +20,9 @@ dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 
+// Trust proxy headers (for render )
+app.set('trust proxy', 1);
+
 // HTTP request logging
 app.use(morgan('combined', {
   stream: {
