@@ -48,8 +48,13 @@
             <nav>
                 <div class="logo"><a href="index.html">Migra</a></div>
                 <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#support">Support</a>
+                    <a href="index.html" data-i18n="nav_home">Home</a>
+                    <a href="index.html#support" data-i18n="nav_support">Support</a>
+                    <select id="language-selector" class="lang-select">
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="ht">🇭🇹 HT</option>
+                        <option value="es">🇪🇸 ES</option>
+                    </select>
                 </div>
             </nav>
         </div>
@@ -58,10 +63,11 @@
     <main>
         <div class="container">
             <div class="privacy-content">
-                <h1>Privacy Policy</h1>
-                <p>Last updated: November 27, 2025</p>
+                <h1 data-i18n="privacy_title">Privacy Policy</h1>
+                <p data-i18n="privacy_last_updated">Last updated: November 27, 2025</p>
 
-                <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of
+                <p data-i18n="privacy_intro">This Privacy Policy describes Our policies and procedures on the
+                    collection, use and disclosure of
                     Your information when You use the Service and tells You about Your privacy rights and how the law
                     protects You.</p>
 
@@ -111,9 +117,10 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Migra App. All rights reserved.</p>
+            <p data-i18n="footer_copyright">&copy; 2025 Migra App. All rights reserved.</p>
         </div>
     </footer>
+    <script src="js/i18n.js"></script>
 </body>
 
 </html>

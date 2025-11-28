@@ -77,8 +77,13 @@
             <nav>
                 <div class="logo"><a href="index.html">Migra</a></div>
                 <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#support">Support</a>
+                    <a href="index.html" data-i18n="nav_home">Home</a>
+                    <a href="index.html#support" data-i18n="nav_support">Support</a>
+                    <select id="language-selector" class="lang-select">
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="ht">🇭🇹 HT</option>
+                        <option value="es">🇪🇸 ES</option>
+                    </select>
                 </div>
             </nav>
         </div>
@@ -87,32 +92,34 @@
     <main>
         <div class="container">
             <div class="feedback-content">
-                <h1>We Value Your Feedback</h1>
-                <p>Help us make Migra better. Whether it's a feature request or a bug report, we want to hear from you.
+                <h1 data-i18n="feedback_title">We Value Your Feedback</h1>
+                <p data-i18n="feedback_subtitle">Help us make Migra better. Whether it's a feature request or a bug
+                    report, we want to hear from you.
                 </p>
 
                 <div class="feedback-options">
                     <a href="mailto:support@migra.app?subject=Feature Request - Migra App" class="feedback-card">
                         <i class="fas fa-lightbulb feedback-icon"></i>
                         <div class="feedback-text">
-                            <h3>Request a Feature</h3>
-                            <p>Have an idea? Let us know what you'd like to see next.</p>
+                            <h3 data-i18n="feedback_feature_title">Request a Feature</h3>
+                            <p data-i18n="feedback_feature_desc">Have an idea? Let us know what you'd like to see next.
+                            </p>
                         </div>
                     </a>
 
                     <a href="mailto:support@migra.app?subject=Bug Report - Migra App" class="feedback-card">
                         <i class="fas fa-bug feedback-icon"></i>
                         <div class="feedback-text">
-                            <h3>Report an Issue</h3>
-                            <p>Found a bug? Tell us what happened so we can fix it.</p>
+                            <h3 data-i18n="feedback_bug_title">Report an Issue</h3>
+                            <p data-i18n="feedback_bug_desc">Found a bug? Tell us what happened so we can fix it.</p>
                         </div>
                     </a>
 
                     <a href="mailto:support@migra.app?subject=General Feedback - Migra App" class="feedback-card">
                         <i class="fas fa-comment-dots feedback-icon"></i>
                         <div class="feedback-text">
-                            <h3>General Feedback</h3>
-                            <p>Any other thoughts or suggestions? We're all ears.</p>
+                            <h3 data-i18n="feedback_general_title">General Feedback</h3>
+                            <p data-i18n="feedback_general_desc">Any other thoughts or suggestions? We're all ears.</p>
                         </div>
                     </a>
                 </div>
@@ -122,9 +129,10 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Migra App. All rights reserved.</p>
+            <p data-i18n="footer_copyright">&copy; 2025 Migra App. All rights reserved.</p>
         </div>
     </footer>
+    <script src="js/i18n.js"></script>
 </body>
 
 </html>

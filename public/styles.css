@@ -96,6 +96,28 @@ nav {
 .nav-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
+}
+
+.lang-select {
+  background: var(--glass-bg);
+  color: var(--text-color);
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  outline: none;
+  backdrop-filter: blur(10px);
+}
+
+.lang-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-select option {
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 /* Hero Section */
