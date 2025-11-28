@@ -5,10 +5,12 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 const reportRoutes = require("./routes/report_routes");
-const locationRoutes = require("./routes/location_routes");
 const registerRoutes = require("./routes/register_routes");
 const morgan = require("morgan");
 const logger = require("./utils/logger");
+const helmet = require("helmet");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 
 // Jobs
@@ -18,6 +20,9 @@ dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 
+// Trust proxy headers (for render )
+app.set('trust proxy', 1);
+
 // HTTP request logging
 app.use(morgan('combined', {
   stream: {
@@ -25,13 +30,26 @@ app.use(morgan('combined', {
   }
 }));
 
+// Security Middleware
+app.use(helmet()); // Set security headers
+app.use(cors()); // Enable CORS (allow all origins for now, configure as needed)
+
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again after 15 minutes",
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+app.use(limiter);
+
 
 // Middleware
 app.use(bodyParser.json());
 
 // Routes
 app.use("/api", reportRoutes);
-app.use("/api", locationRoutes);
 app.use("/api", registerRoutes);
 
 // Connect to MongoDB
@@ -43,13 +61,15 @@ mongoose
   .then(() => logger.info("Connected to MongoDB"))
   .catch((error) => logger.error("Error connecting to MongoDB", error));
 
-// Default route
-// app.get("/", (req, res) => res.send("Welcome to the Immigration Report API"));
-
 // Serve static files from 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
+// Start server only if run directly
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
+}
+
+module.exports = app;
