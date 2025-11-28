@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Migra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .feedback-content {
+            max-width: 600px;
+            margin: 8rem auto 4rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .feedback-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-options {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feedback-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feedback-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .feedback-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feedback-text p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="index.html">Migra</a></div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#support">Support</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="feedback-content">
+                <h1>We Value Your Feedback</h1>
+                <p>Help us make Migra better. Whether it's a feature request or a bug report, we want to hear from you.
+                </p>
+
+                <div class="feedback-options">
+                    <a href="mailto:support@migra.app?subject=Feature Request - Migra App" class="feedback-card">
+                        <i class="fas fa-lightbulb feedback-icon"></i>
+                        <div class="feedback-text">
+                            <h3>Request a Feature</h3>
+                            <p>Have an idea? Let us know what you'd like to see next.</p>
+                        </div>
+                    </a>
+
+                    <a href="mailto:support@migra.app?subject=Bug Report - Migra App" class="feedback-card">
+                        <i class="fas fa-bug feedback-icon"></i>
+                        <div class="feedback-text">
+                            <h3>Report an Issue</h3>
+                            <p>Found a bug? Tell us what happened so we can fix it.</p>
+                        </div>
+                    </a>
+
+                    <a href="mailto:support@migra.app?subject=General Feedback - Migra App" class="feedback-card">
+                        <i class="fas fa-comment-dots feedback-icon"></i>
+                        <div class="feedback-text">
+                            <h3>General Feedback</h3>
+                            <p>Any other thoughts or suggestions? We're all ears.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Migra App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
