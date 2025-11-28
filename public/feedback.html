@@ -79,11 +79,23 @@
                 <div class="nav-links">
                     <a href="index.html" data-i18n="nav_home">Home</a>
                     <a href="index.html#support" data-i18n="nav_support">Support</a>
-                    <select id="language-selector" class="lang-select">
-                        <option value="en">🇺🇸 EN</option>
-                        <option value="ht">🇭🇹 HT</option>
-                        <option value="es">🇪🇸 ES</option>
-                    </select>
+                    <div class="custom-select" id="language-selector">
+                        <div class="selected-option">
+                            <span class="flag">🇺🇸</span> <span class="lang-code">EN</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="options-container">
+                            <div class="option" data-value="en">
+                                <span class="flag">🇺🇸</span> English
+                            </div>
+                            <div class="option" data-value="ht">
+                                <span class="flag">🇭🇹</span> Kreyòl
+                            </div>
+                            <div class="option" data-value="es">
+                                <span class="flag">🇪🇸</span> Español
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>

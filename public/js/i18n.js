@@ -1,18 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
     const languageSelector = document.getElementById('language-selector');
+    const selectedOption = languageSelector.querySelector('.selected-option');
+    const optionsContainer = languageSelector.querySelector('.options-container');
+    const options = languageSelector.querySelectorAll('.option');
 
     // Load saved language or default to English
     const savedLanguage = localStorage.getItem('migra-lang') || 'en';
-    languageSelector.value = savedLanguage;
+    updateSelectedOption(savedLanguage);
     loadLanguage(savedLanguage);
 
-    // Event listener for language change
-    languageSelector.addEventListener('change', (e) => {
-        const selectedLanguage = e.target.value;
-        localStorage.setItem('migra-lang', selectedLanguage);
-        loadLanguage(selectedLanguage);
+    // Toggle dropdown
+    selectedOption.addEventListener('click', (e) => {
+        e.stopPropagation();
+        optionsContainer.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+        optionsContainer.classList.remove('active');
+    });
+
+    // Handle option selection
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.getAttribute('data-value');
+            localStorage.setItem('migra-lang', lang);
+            updateSelectedOption(lang);
+            loadLanguage(lang);
+            optionsContainer.classList.remove('active');
+        });
     });
 });
+
+function updateSelectedOption(lang) {
+    const languageSelector = document.getElementById('language-selector');
+    const flagSpan = languageSelector.querySelector('.selected-option .flag');
+    const codeSpan = languageSelector.querySelector('.selected-option .lang-code');
+
+    const flags = {
+        'en': '🇺🇸',
+        'ht': '🇭🇹',
+        'es': '🇪🇸'
+    };
+
+    const codes = {
+        'en': 'EN',
+        'ht': 'HT',
+        'es': 'ES'
+    };
+
+    if (flagSpan && codeSpan) {
+        flagSpan.textContent = flags[lang] || flags['en'];
+        codeSpan.textContent = codes[lang] || codes['en'];
+    }
+}
 
 async function loadLanguage(lang) {
     try {

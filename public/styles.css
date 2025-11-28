@@ -99,25 +99,77 @@ nav {
   align-items: center;
 }
 
-.lang-select {
-  background: var(--glass-bg);
-  color: var(--text-color);
-  border: 1px solid var(--glass-border);
-  padding: 0.5rem;
-  border-radius: 8px;
-  cursor: pointer;
+.custom-select {
+  position: relative;
+  width: 120px;
   font-family: var(--font-main);
-  outline: none;
-  backdrop-filter: blur(10px);
+  user-select: none;
 }
 
-.lang-select:hover {
+.selected-option {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s;
+}
+
+.selected-option:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.lang-select option {
-  background: var(--bg-color);
-  color: var(--text-color);
+.options-container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 160px;
+  background: #1e293b;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.options-container.active {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.option {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: background 0.2s;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.flag {
+  font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hero Section */
